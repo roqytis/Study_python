@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+*자료입력*<p/>
+<form action="/gpapp/insert" method="post">{% csrf_token %}
+메시지 입력 : <input type="text" name="msg">
+<input type="submit" value="확인"> 
+</form>
+</body>
+</html>
