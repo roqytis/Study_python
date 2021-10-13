@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload = function(){
+	document.getElementById("btnOk").onclick = function(){
+		frm.submit();
+	}
+}
+</script>
+</head>
+<body>
+<table border="1">
+ <tr>
+    <td><img src="/static/images/pic2.jpg" style="width:70%"/></td>
+    <td>
+    <pre>
+    낙도선교의  또다른 노을 잊을수 없는 추억을 팝니다.
+    11/1(월) 이내 발송 예정= 해외배송 팁
+    배송비 10,000원이나 무료
+    1개마다 배송비 반복 부과
+    이건 돈으로 가격을 맺을 수 없어
+    원산지 : 한국
+    </pre>
+    </td>
+ </tr>
+ <tr>
+   <td colspan="2" style="text-align: center;">
+   <form action="cart" name="frm" method="post">{% csrf_token %}
+     <input type="hidden" name="name" value ="보라색 노을">
+     <input type="hidden" name="price" value ="550000">
+     <input type="button" id="btnOk" value ="장바구니 물건 담기">
+   
+   </form>
+   <br>
+   <input type="button" value ="홈페이지로" onclick="history.back()">
+   </td>
+  </tr>
+</table>
+</body>
+</html>
