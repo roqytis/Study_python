@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h2>상품 자료</h2>
+{% if articles.count > 0 %}
+  {% for a in articles %}
+    <b>{{a.id}}</b> {{a.code}} {{a.name}} {{a.price}} {{a.pub_date}}<br>
+  {% endfor  %}
+{% else %}
+  <p>자료가 없어요</p>
+{% endif %}
+</body>
+</html>
