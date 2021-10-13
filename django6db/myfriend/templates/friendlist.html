@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h2>친구 자료</h2>
+<table>
+<tr><th>id</th><th>이름</th><th>주소</th><th>나이</th></tr>
+{% if friends.count > 0 %}
+  {% for f in friends %}
+  <tr>
+    <td>{{f.id}}</td>
+    <td>{{f.irum}}</td>
+    <td>{{f.juso}}</td>
+    <td>{{f.nai}}</td>
+  </tr>
+  {% endfor  %}
+{% else %}
+  <p>친구가 없어요</p>
+{% endif %}
+</table>
+</body>
+</html>
