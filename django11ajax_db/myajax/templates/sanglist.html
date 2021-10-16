@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+let xhr;
+
+window.onload = function(){
+	//방법1
+	document.querySelector("#btnOk1").onclick = function(){
+		xhr = new XMLHttpRequest();
+		
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState === XMLHttpRequest.DONE){
+				if(xhr.status === 200){
+					process1();
+				}
+			}
+		}
+		url = "calldb1";
+		xhr.open("GET", url, true);
+		xhr.send()
+	}
+	//방법2 신기술
+	document.querySelector("#btnOk2").onclick = function(){
+		const url = 'calldb2'
+		
+		fetch(url).then(res =>{
+            if(res.status === 200){
+            	return res.json();
+            }else{
+            	console.log('http error')
+            }
+		})
+		.then(jsonData => {
+			process2(jsonData);
+		})
+		.catch(err => {
+			console.log(err);
+		});
+	}
+}
+
+function process1(){
+	let parseData= JSON.parse(xhr.responseText)
+	//alert(parseData);
+	
+	let ss ="<table border='1'>"
+	ss += "<tr><th>코드</th><th>상품명</th><th>수량</th><th>단가</th></tr>"
+	let count = 0
+	
+	for(let i = 0; i < parseData.length; i++){
+		ss += "<tr>";
+		ss += "<td>" + parseData[i].code + "</td>";
+		ss += "<td>" + parseData[i].sang + "</td>";
+		ss += "<td>" + parseData[i].su + "</td>";
+		ss += "<td>" + parseData[i].dan + "</td>";
+		ss += "</tr>";
+		count += 1;
+	}
+	ss += "</table>";
+	document.querySelector("#showData1").innerHTML =ss;
+}
+function process2(jsonData){
+	let ss ="<table border='1'>"
+	ss += "<tr><th>코드</th><th>상품명</th><th>수량</th><th>단가</th></tr>"
+	let count = 0
+		
+	for(let i = 0; i < jsonData.length; i++){
+			ss += "<tr>";
+			ss += "<td>" + jsonData[i].code + "</td>";
+			ss += "<td>" + jsonData[i].sang + "</td>";
+			ss += "<td>" + jsonData[i].su + "</td>";
+			ss += "<td>" + jsonData[i].dan + "</td>";
+			ss += "</tr>";
+			count += 1;
+		}
+	ss += "</table>";
+	document.querySelector("#showData2").innerHTML =ss;
+}
+</script>
+</head>
+<body>
+상품 보기 (Ajax로 처리)<p/>
+<button id="btnOk1">상품자료 출력 방법1</button>
+<br><br>
+<div id="showData1"></div>
+
+<hr>
+<button id="btnOk2">상품자료 출력 방법2</button>
+<br><br>
+<div id="showData2"></div>
+</body>
+</html>
