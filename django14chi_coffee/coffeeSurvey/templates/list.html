@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>list.html</title>
+</head>
+<body>
+<a href="#" onclick='history.back()'>호페이지</a>
+<h1>소비자 인식 조사 결과</h1>
+{% if ctab %}
+{{ctab|safe}}
+{% endif %}
+<br>
+가설검정 결과 :
+{% if ctab %}
+{{result}}
+{% endif %}
+<br>
+
+<img src="/static/images/coffee.png" width="400">
+
+
+<hr>
+{% if ctab %}
+{{df|safe}}
+{% endif %}
+<br>
+
+</body>
+</html>
