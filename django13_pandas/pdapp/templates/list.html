@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>직원 자료</h1>
+{% if datas %} 
+{{datas|safe}} <!-- escape 문자가 제거되어 정상적인 테이블 형태로 자료 출력 성공 -->
+{% endif %}
+<br>
+{{ctab|safe}}
+<br>
+부서별 연봉합 : <br>
+총무부 : {{buser_group_detail.sum.10}}<br>
+영업부 : {{buser_group_detail.sum.20}}<br>
+전산부 : {{buser_group_detail.sum.30}}<br>
+관리부 : {{buser_group_detail.sum.40}}<br>
+부서별 연봉 평균 : <br>
+관리부 : {{buser_group_detail.avg.10}}<br>
+영업부 : {{buser_group_detail.avg.20}}<br>
+전산부 : {{buser_group_detail.avg.30}}<br>
+관리부 : {{buser_group_detail.avg.40}}<br>
+
+<br>
+<img src="/static/images/test1.png">
+</body>
+</html>
